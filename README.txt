@@ -27,6 +27,7 @@ INSTALLATION
    See: https://www.drupal.org/node/895232 for further information.
 
  * If you want then you can assign permission 'Access GET on Page Node resource' to the 'ANONYMOUS USER'.
+   See demo: https://drive.google.com/file/d/1ZDsFUQpDRGrWDRRupRQJbw8bdjF36anW/view
 
 
 CONFIGURATION
@@ -37,6 +38,7 @@ CONFIGURATION
 
  * For the API Access ('Access GET on Page Node resource'):
    Permission to access the API endpoint.
+   See demo: https://drive.google.com/file/d/1ZDsFUQpDRGrWDRRupRQJbw8bdjF36anW/view
 
 
 MAINTAINERS
