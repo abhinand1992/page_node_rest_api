@@ -1,0 +1,26 @@
+<?php
+
+/**
+ * @file
+ * Install file for page_node_rest_api.
+ */
+
+/**
+ * Implements hook_install().
+ */
+function page_node_rest_api_install() {
+
+  // Kaltura default configuration.
+  $config = \Drupal::configFactory()->getEditable('page_node_rest_api.config');
+  $config->set('siteapikey', 'No API Key yet');
+  $config->save();
+}
+
+/**
+ * Implements hook_uninstall().
+ */
+function page_node_rest_api_uninstall() {
+
+  // Kaltura delete configuration.
+  \Drupal::configFactory()->getEditable('page_node_rest_api.config')->delete();
+}

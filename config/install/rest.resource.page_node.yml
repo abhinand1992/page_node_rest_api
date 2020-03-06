@@ -1,0 +1,9 @@
+id: page_node
+plugin_id: page_node
+granularity: method
+configuration:
+  GET:
+    supported_formats:
+      - json
+    supported_auth:
+      - cookie

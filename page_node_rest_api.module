@@ -1,0 +1,58 @@
+<?php
+
+/**
+ * @file
+ * Contains page_api.module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+use Drupal\Core\Form\FormStateInterface;
+
+/**
+ * Implements hook_help().
+ */
+function page_node_rest_api_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+
+    // Main module help for the page_node_rest_api module.
+    case 'help.page.page_node_rest_api':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('This module provide JSON API for the user specified node in the content type "page".') . '</p>';
+      return $output;
+
+    default:
+      return;
+  }
+}
+
+/**
+ * Implements hook_form_FORM-ID_alter().
+ * Added 'API key' field in the site information form.
+ */
+function page_node_rest_api_form_system_site_information_settings_alter(&$form, FormStateInterface $form_state) {
+  $site_api_key = \Drupal::config('page_node_rest_api.config')->get('siteapikey');
+  $form['site_information']['site_api_key'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Site API Key'),
+    '#default_value' => $site_api_key == 'No API Key yet' ? '' : $site_api_key,
+    '#placeholder' => t('No API Key yet'),
+    '#description' => t('API key for accessing site APIs.'),
+  );
+  $form['actions']['submit']['#value'] = t('Update Configuration');
+  $form['#submit'][] = 'page_node_rest_api_system_site_information_submit_handler';
+}
+
+/**
+ * Save API Key value.
+ */
+function page_node_rest_api_system_site_information_submit_handler(&$form, FormStateInterface $formState) {
+ 
+  if($form['site_information']['site_api_key']['#value'] != \Drupal::config('page_node_rest_api.config')->get('siteapikey') && (!empty( $form['site_information']['site_api_key']['#value']))) {
+
+    \Drupal::configFactory()->getEditable('page_node_rest_api.config')
+    ->set('siteapikey', $form['site_information']['site_api_key']['#value'])
+    ->save();
+    drupal_set_message('Site API Key is saved with the value \'' . $form['site_information']['site_api_key']['#value'] .'\'.');
+  }
+} 

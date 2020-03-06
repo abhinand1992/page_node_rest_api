@@ -1,0 +1,10 @@
+name: API for the Content Type Page
+type: module
+description: 'Provides JSON response of user specified node in the content type "Page".'
+package: Web services
+core: 8.x
+core_version_requirement: ^8 || ^9
+dependencies:
+  - drupal:rest
+
+configure: system.site_information_settings
