@@ -1,3 +1,4 @@
+
 CONTENTS OF THIS FILE
 ---------------------
 
@@ -11,7 +12,7 @@ CONTENTS OF THIS FILE
 INTRODUCTION
 ------------
 
-This module provide API with Json response of user specified node in the content type 'page'.
+This module provide API with Json response of node that specified by user in the content type 'page'.
 
 
 REQUIREMENTS
